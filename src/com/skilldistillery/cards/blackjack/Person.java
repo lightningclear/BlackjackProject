@@ -1,10 +1,10 @@
 package com.skilldistillery.cards.blackjack;
 
-public class Player {
+public class Person {
 	private Hand hand;
 	private String name;
 	
-	public Player() {
+	public Person() {
 		this.hand = new hand();
 		this.name = "";
 	}
@@ -24,4 +24,6 @@ public class Player {
 	public void setName(String name) {
 		this.name = name;
 	}
+}
+
 }
