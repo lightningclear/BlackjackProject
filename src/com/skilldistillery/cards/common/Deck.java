@@ -3,6 +3,7 @@ package com.skilldistillery.cards.common;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Deck {
 	private List<Card> cards;
@@ -22,16 +23,17 @@ public class Deck {
 	}
 
 	public int checkDeckSize() {
-
 		return cards.size();
 
 	}
 
 	public Card dealCard() {
+		Card card = cards.get(0);
 		return cards.remove(0);
 	}
 
 	public void shuffle() {
-		Collections.shuffle(cards);
+		Collections.shuffle(cards, new Random());
 	}
+
 }
