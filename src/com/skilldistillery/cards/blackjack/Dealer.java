@@ -1,5 +1,14 @@
 package com.skilldistillery.cards.blackjack;
 
-public class Dealer {
+import com.skilldistillery.cards.common.Deck;
 
+public class Dealer extends Hand{
+	private Deck deck;
+	
+	public Dealer(Deck deck) {
+		this.deck = deck;
+	}
+	
+	//dealCard();
+	
 }
