@@ -18,6 +18,7 @@ public class Dealer extends Player {
 		return this.deck.dealCard();
 
 	}
+	// showDealerHnad
 	
 	public void shuffle() {
 		deck.shuffle();
