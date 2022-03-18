@@ -1,19 +1,14 @@
-package com.skilldistillery.cards.blackjack;
+package com.skilldistillery.cards.common;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.skilldistillery.cards.common.Card;
-import com.skilldistillery.cards.common.Deck;
-
 public abstract class Hand {
-	private List<Card> hand;
+	protected List<Card> hand = new ArrayList<Card>();
 
-	public void hand() {
-	}
-
-	public void addCard(Deck deck) {
-		getHand().add(deck.dealCard());
+	public void addCard(Card card) {
+		this.hand.add(card);
+//		getHand().add(deck.dealCard());
 	}
 
 	public void clear() {
@@ -27,17 +22,7 @@ public abstract class Hand {
 			value += card.getValue();
 		}
 		return value;
-
 	}
-
-//	@Override
-//	public String toString() {
-//		String output = "";
-//		for (Card card : getHand()) {
-//			output += card + " - ";
-//		}
-//		return output;
-//	}
 
 	public List<Card> getHand() {
 		return hand;
