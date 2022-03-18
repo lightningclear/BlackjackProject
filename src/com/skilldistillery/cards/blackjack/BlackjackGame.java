@@ -57,7 +57,7 @@ public class BlackjackGame {
 			}
 		}if(dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
 			System.out.println("The Dealer won!");
-		}else(dealer.getHand().getHandValue() < player.getHand().getHandValue()) {
+		}else if (dealer.getHand().getHandValue() < player.getHand().getHandValue()) {
 			System.out.println("You've won!");
 		}
 	}
