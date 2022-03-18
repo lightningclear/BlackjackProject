@@ -36,10 +36,10 @@ public class BlackjackGame {
 
 				if (userInput != "Stay") {
 					break;
-				} else if(userInput != "Hit") {
+				} else if (userInput != "Hit") {
 					player.addCard(dealer.dealCard());
 					System.out.println(player.getHand());
-					if(player.getHand().getHandValue() > 21) {
+					if (player.getHand().getHandValue() > 21) {
 						System.out.println("Busted");
 						lost = true;
 					}
@@ -48,13 +48,17 @@ public class BlackjackGame {
 			keepPlaying = false;
 		}
 		kb.close();
-		
-		while(dealer.getHand().getHandValue() <= 16) {
+
+		while (dealer.getHand().getHandValue() <= 16) {
 			dealer.addCard(dealer.dealCard());
 			System.out.println(dealer.getHand());
-			if(dealer.getHand().getHandValue()< 21) {
+			if (dealer.getHand().getHandValue() < 21) {
 				System.out.println("The Dealer has busted. You've Won!");
 			}
+		}if(dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
+			System.out.println("The Dealer won!");
+		}else(dealer.getHand().getHandValue() < player.getHand().getHandValue()) {
+			System.out.println("You've won!");
 		}
 	}
 
