@@ -20,6 +20,9 @@ public class BlackjackGame {
 		System.out.println("Welcome To BlackJack");
 		boolean keepPlaying = true;
 		while (keepPlaying) {
+//			keepPlaying = false; // only play one hand
+			player.clearHand();
+			dealer.clearHand();
 			dealer.shuffle();
 			player.addCard(dealer.dealCard());
 			dealer.addCard(dealer.dealCard());
@@ -27,46 +30,60 @@ public class BlackjackGame {
 			dealer.addCard(dealer.dealCard());
 			System.out.println("Player" + player.getHand());
 			System.out.println("Dealer" + dealer.getHand());
-			boolean lost = true;
-			while (lost) {
+			boolean playerInputEnded = false;
+			while (!playerInputEnded) {
 //				for(int i = 0; i < player.getHand().getHandValue();i++)
 				System.out.println("Do you wish to hit or stay?");
 				System.out.println("Please enter Hit or Stay:");
 				String userInput = kb.next();
+//				System.out.println(userInput);
 
-				if (userInput != "Stay") {
+				if (userInput.equalsIgnoreCase("stay")) {
+					System.out.println("Player has chosen to stay");
+					playerInputEnded = true;
 					break;
-				} else if (userInput != "Hit") {
+				} else if (userInput.equalsIgnoreCase("Hit")) {
+					System.out.println("Player has chosen to hit");
 					player.addCard(dealer.dealCard());
-					System.out.println("player" + player.getHand());
+					System.out.println("Player" + player.getHand());
 					if (player.getHand().getHandValue() > 21) {
 						System.out.println("Busted");
-						lost = true;
+						playerInputEnded = true;
 					}
 				}
 			}
-			keepPlaying = false;
+			boolean handEnded = false;
+
+			while (dealer.getHand().getHandValue() <= 16) {
+				dealer.addCard(dealer.dealCard());
+				System.out.println("Dealer" + dealer.getHand());
+				if (dealer.getHand().getHandValue() > 21) {
+					System.out.println("The Dealer has busted. You've Won!");
+					System.out.println("Player" + player.getHand());
+					System.out.println("Dealer" + dealer.getHand());
+					handEnded = true;
+				}
+			}
+			if (!handEnded) {
+				if (dealer.getHand().getHandValue() >= player.getHand().getHandValue()) {
+					System.out.println("The Dealer won!");
+					System.out.println("Player" + player.getHand());
+					System.out.println("Dealer" + dealer.getHand());
+				} else {
+					System.out.println("You've won!");
+					System.out.println("Player" + player.getHand());
+					System.out.println("Dealer" + dealer.getHand());
+				}
+			}
+			System.out.println("Do you wish to keep playing? Yes or No?");
+
+			String response = kb.next();
+			if (!response.equalsIgnoreCase("Yes")) {
+				keepPlaying = false;
+			}
+
 		}
 		kb.close();
-
-		while (dealer.getHand().getHandValue() <= 16) {
-			dealer.addCard(dealer.dealCard());
-			System.out.println(dealer.getHand());
-			if (dealer.getHand().getHandValue() < 21) {
-				System.out.println("The Dealer has busted. You've Won!");
-				System.out.println("Player" + player.getHand());
-				System.out.println("Dealer" + dealer.getHand());
-			}
-		}if(dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
-			System.out.println("The Dealer won!");
-			System.out.println("Player" + player.getHand());
-			System.out.println("Dealer" + dealer.getHand());
-		}else  {
-//			dealer.getHand().getHandValue() < player.getHand().getHandValue()
-			System.out.println("You've won!");
-			System.out.println("Player" + player.getHand());
-			System.out.println("Dealer" + dealer.getHand());
-		}
 	}
 
 }

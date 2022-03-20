@@ -11,9 +11,10 @@ public abstract class Hand {
 //		getHand().add(deck.dealCard());
 	}
 
-	public void clear() {
-		for (int i = 0; i < getHand().size(); i++)
-			getHand().clear();
+	public void clearHand() {
+//		for (int i = 0; i < getHand().size(); i++)
+//			getHand().clear();
+		hand.clear();
 	}
 
 	public int getHandValue() {
